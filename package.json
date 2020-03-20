@@ -1,0 +1,24 @@
+{
+  "name": "canny",
+  "version": "0.0.1",
+  "description": "A 2D canvas renderer.",
+  "main": "index.js",
+  "repository": "https://github.com/SouthpawGoblin/canny.git",
+  "author": "Roger Chi <goblin-qyz@163.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "cross-env TARGET=dev webpack --watch",
+    "dist": "cross-env TARGET=dist webpack",
+    "docs": "cross-env TARGET=docs webpack"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
