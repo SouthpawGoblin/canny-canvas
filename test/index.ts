@@ -1,3 +1,3 @@
-import aa from '../src/index';
+import canny from '../src/index';
 
-console.log(aa);
+console.log(canny);

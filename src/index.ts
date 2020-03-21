@@ -1,6 +1,10 @@
-export interface G {
-  a: number
-}
+import { version } from './Canny';
+import CannyObject from './Object';
+import CannyScene from './Scene';
 
-const aa = 3;
-export default aa;
+const canny = {
+  version,
+  Object: CannyObject,
+  Scene: CannyScene
+};
+export default canny;
