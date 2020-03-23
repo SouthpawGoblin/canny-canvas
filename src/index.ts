@@ -1,4 +1,4 @@
-import { version } from './Canny';
+import { version } from './common';
 import CannyObject from './Object';
 import CannyScene from './Scene';
 
