@@ -7,6 +7,7 @@ export default class CannyScene extends CannyObject {
   protected _canvas: HTMLCanvasElement;
   protected _mounted: boolean;
   protected _rendering: boolean;
+  protected _time: number;
 
   constructor(dom: HTMLElement) {
     super({
@@ -17,10 +18,11 @@ export default class CannyScene extends CannyObject {
     this.dom = dom;
     this.translate = [0, 0];
     this._canvas = document.createElement('canvas');
-    this._canvas.style.width = '100%';
-    this._canvas.style.height = '100%';
+    this._canvas.width = this.dom.clientWidth;
+    this._canvas.height = this.dom.clientHeight;
     this._mounted = false;
     this._rendering = true;
+    this._time = 0;
   }
 
   dispose() {
@@ -28,7 +30,7 @@ export default class CannyScene extends CannyObject {
     this._rendering = false;
   }
 
-  loop = (deltaTime: number) => {
+  loop = (time: number) => {
     if (!this._mounted) {
       this.dom.appendChild(this._canvas);
       this._mounted = true;
@@ -39,6 +41,8 @@ export default class CannyScene extends CannyObject {
     const ctx = this._canvas.getContext('2d');
     if (ctx) {
       ctx.clearRect(0, 0, this.dom.clientWidth, this.dom.clientHeight);
+      const deltaTime = time - this._time;
+      this._time = time;
       this.updateAndRender(ctx, deltaTime);
     }
 

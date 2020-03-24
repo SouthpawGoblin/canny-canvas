@@ -57,6 +57,8 @@ const config = {
   plugins: plugins
 };
 
-console.log(JSON.stringify(config, 2));
+if (target === 'dev') {
+  config.devtool = 'source-map';
+}
 
 module.exports = config;
