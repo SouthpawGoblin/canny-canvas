@@ -1,8 +1,12 @@
 import utils from './utils';
 
-export interface CannyObjectConfig {
-  name?: string;
-  update?: (this: CannyObject) => void;
+export interface ObjectConfig {
+  name: string;
+  x: number;
+  y: number;
+  anchorX: number;
+  anchorY: number;
+  update: (this: CannyObject, deltaTime: number) => void;
 }
 
 export default class CannyObject {
@@ -12,27 +16,31 @@ export default class CannyObject {
   y: number;
   anchorX: number;
   anchorY: number;
+  worldX: number;
+  worldY: number;
   scale: number;
   parent: CannyObject | null;
   children: CannyObject[];
-  update: (this: CannyObject) => void;
+  update: (this: CannyObject, deltaTime: number) => void;
   
-  constructor(config?: CannyObjectConfig) {
+  constructor(config?: Partial<ObjectConfig>) {
     this.id = utils.uuid();
     this.name = config?.name ?? '';
     this.update = config?.update ?? (() => {});
-    this.x = 0;
-    this.y = 0;
-    this.anchorX = 0.5;
-    this.anchorY = 0.5;
+    this.x = config?.x ?? 0;
+    this.y = config?.y ?? 0;
+    this.anchorX = config?.anchorX ?? 0.5;
+    this.anchorY = config?.anchorY ?? 0.5;
+    this.worldX = 0;
+    this.worldY = 0;
     this.scale = 1;
     this.parent = null;
     this.children = [];
   }
 
-  protected render(this: CannyObject, ctx: CanvasRenderingContext2D) {};
+  render(ctx: CanvasRenderingContext2D) {};
 
-  protected dispose(this: CannyObject) {};
+  dispose() {};
 
   addObject(obj: CannyObject) {
     this.children.push(obj);
