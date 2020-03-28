@@ -1,28 +1,26 @@
-import canny from '../src/index';
-import CannyRect from '../src/Rect';
+import { CannyScene, CannyRect } from '../src/index';
 
 const dom = document.getElementById('app');
 if (dom) {
-  const scene = new canny.Scene(dom);
-  scene.addObject(new canny.Rect({
+  const scene = new CannyScene(dom);
+  scene.addObject(new CannyRect({
     x: 200,
     y: 200,
     fillColor: '#00ff00'
   }));
-  scene.addObject(new canny.Rect({
+  scene.addObject(new CannyRect({
     x: -200,
     y: -200,
     fillColor: '#0000ff'
   }));
-  const rect = new canny.Rect({
+  const rect = new CannyRect({
     x: -800,
-    update: function (deltaTime: number) {
-      const self = this as CannyRect;
-      self.x += deltaTime * 0.1;
-      self.width += deltaTime * 0.1;
+    update: function(this: CannyRect, deltaTime: number) {
+      this.x += deltaTime * 0.1;
+      this.width += deltaTime * 0.1;
     }
   });
-  rect.addObject(new canny.Rect({
+  rect.addObject(new CannyRect({
     x: 50,
     y: 50,
     fillColor: '#ff0000'

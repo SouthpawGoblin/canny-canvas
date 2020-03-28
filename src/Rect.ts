@@ -26,6 +26,7 @@ export default class CannyRect extends CannyObject {
       radius: config?.border?.radius ?? BORDER_STYLE.radius
     };
     this.fillColor = config?.fillColor ?? '#000000';
+    this.update = config?.update ?? (() => {});
   }
 
   render(ctx: CanvasRenderingContext2D) {

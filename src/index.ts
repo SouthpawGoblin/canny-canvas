@@ -1,12 +1,9 @@
 import { version } from './common';
-import CannyObject from './Object';
-import CannyScene from './Scene';
-import CannyRect from './Rect';
+export { default as CannyObject } from './Object';
+export { default as CannyScene } from './Scene';
+export { default as CannyRect } from './Rect';
 
 const canny = {
-  version,
-  Object: CannyObject,
-  Scene: CannyScene,
-  Rect: CannyRect
+  version
 };
 export default canny;

@@ -6,7 +6,7 @@ export interface ObjectConfig {
   y: number;
   anchorX: number;
   anchorY: number;
-  update: (this: CannyObject, deltaTime: number) => void;
+  update: (deltaTime: number) => void;
 }
 
 export default class CannyObject {
@@ -21,16 +21,16 @@ export default class CannyObject {
   scale: number;
   parent: CannyObject | null;
   children: CannyObject[];
-  update: (this: CannyObject, deltaTime: number) => void;
+  update: (deltaTime: number) => void;
   
   constructor(config?: Partial<ObjectConfig>) {
     this.id = utils.uuid();
     this.name = config?.name ?? '';
-    this.update = config?.update ?? (() => {});
     this.x = config?.x ?? 0;
     this.y = config?.y ?? 0;
     this.anchorX = config?.anchorX ?? 0.5;
     this.anchorY = config?.anchorY ?? 0.5;
+    this.update = config?.update ?? (() => {});
     this.worldX = 0;
     this.worldY = 0;
     this.scale = 1;
