@@ -1,5 +1,7 @@
-export interface G {
-    a: number;
-}
-declare const aa = 3;
-export default aa;
+export { default as Object } from './Object';
+export { default as Scene } from './Scene';
+export { default as Rect } from './Rect';
+declare const canny: {
+    version: string;
+};
+export default canny;
