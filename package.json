@@ -4,7 +4,7 @@
   "description": "A 2D canvas renderer.",
   "main": "dist/index.dist.js",
   "types": "dist/index.d.ts",
-  "repository": "https://github.com/SouthpawGoblin/canny.git",
+  "repository": "https://github.com/SouthpawGoblin/canny-canvas.git",
   "author": "Roger Chi <goblin-qyz@163.com>",
   "license": "MIT",
   "private": false,

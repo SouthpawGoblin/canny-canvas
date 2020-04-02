@@ -2,6 +2,8 @@
 
 A js canvas renderer written in Typescript. Inspired by Three.js and Unity.
 
+[Demo here](https://southpawgoblin.github.io/canny-canvas/)
+
 ## Installation
 
 ```bash
