@@ -13,7 +13,7 @@ const output = {
     hashDigestLength: 6
   },
   dist: {
-    filename: 'index.dist.[hash].js',
+    filename: 'index.dist.js',
     path: path.resolve(__dirname, 'dist'),
     hashDigestLength: 6
   },
