@@ -6,12 +6,12 @@ if (dom) {
   scene.addObject(new Rect({
     x: 200,
     y: 200,
-    fillColor: '#00ff00'
+    color: '#00ff00'
   }));
   scene.addObject(new Rect({
     x: -200,
     y: -200,
-    fillColor: '#0000ff'
+    color: '#0000ff'
   }));
   const rect = new Rect({
     x: -800,
@@ -23,9 +23,9 @@ if (dom) {
   rect.addObject(new Rect({
     x: 50,
     y: 50,
-    fillColor: '#ff0000'
+    color: '#ff0000'
   }));
   scene.addObject(rect);
 
-  scene.loop(0);
+  scene.loop();
 }

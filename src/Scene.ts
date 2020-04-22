@@ -30,7 +30,7 @@ export default class CannyScene extends CannyObject {
     this._rendering = false;
   }
 
-  loop = (time: number) => {
+  loop = (time: number = 0) => {
     if (!this._mounted) {
       this.dom.appendChild(this._canvas);
       this._mounted = true;

@@ -1,6 +1,6 @@
 # Canny Canvas
 
-A js canvas renderer written in Typescript. Inspired by Three.js and Unity.
+A js canvas 2D renderer written in Typescript. Inspired by Three.js and Unity.
 
 [Demo here](https://southpawgoblin.github.io/canny-canvas/)
 
@@ -42,7 +42,8 @@ scene.addObject(new Rect({
   x: 0,
   y: 500,
   fillColor: '#ff0000',
-  update: function(deltaTime: number) {
+  // DON'T use arrow function for update, or you'll lose access to the object's own properties.
+  update: function(deltaTime) {
     this.x += deltaTime * 0.1;
   }
 }));
@@ -67,5 +68,5 @@ scene.addObject(parentRect);
 3. Finally, start the render loop and you'll see all the objects are rendered on the canvas with animations defined in their `update` function.
 
 ```js
-scene.loop(0);
+scene.loop();
 ```

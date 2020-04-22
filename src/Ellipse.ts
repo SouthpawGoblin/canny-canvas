@@ -1,19 +1,22 @@
 import CannyObject, { ObjectConfig } from "./Object";
 import { BorderStyle } from "./types";
 import { BORDER_STYLE } from "./defaults";
-
-interface RectConfig extends ObjectConfig {
-  width: number;
-  height: number;
+// TODO:
+interface EllipseConfig extends ObjectConfig {
+  radiusX: number;
+  radiusY: number;
+  startAngle: number;
+  endAngle: number;
+  border: BorderStyle;
   color: string;
-  stroke: boolean;
-  strokeWidth: number;
-  cornerRadius: number;
 }
 
 export default class CannyRect extends CannyObject {
-  props: RectConfig
-  // TODO:
+  width: number;
+  height: number;
+  borderStyle: BorderStyle;
+  fillColor: string;
+
   constructor(config?: Partial<RectConfig>) {
     super(config);
     this.width = config?.width ?? 100;
@@ -24,7 +27,7 @@ export default class CannyRect extends CannyObject {
       color: config?.border?.color ?? BORDER_STYLE.color,
       radius: config?.border?.radius ?? BORDER_STYLE.radius
     };
-    this.fillColor = config?.color ?? '#000000';
+    this.fillColor = config?.fillColor ?? '#000000';
     this.update = config?.update ?? (() => {});
   }
 
