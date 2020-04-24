@@ -6,12 +6,18 @@ if (dom) {
   scene.addObject(new Rect({
     x: 200,
     y: 200,
-    color: '#00ff00'
+    color: '#00ff00',
+    stroke: true
   }));
   scene.addObject(new Rect({
     x: -200,
     y: -200,
-    color: '#0000ff'
+    color: '#0000ff',
+    stroke: true,
+    strokeWidth: 30,
+    update: function(this: Rect, deltaTime: number) {
+      this.rotation += deltaTime * 0.001;
+    }
   }));
   const rect = new Rect({
     x: -800,

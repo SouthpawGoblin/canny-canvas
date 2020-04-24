@@ -34,14 +34,14 @@ const scene = new Scene(dom);
 scene.addObject(new Rect({
   x: 200,
   y: 200,
-  fillColor: '#00ff00'
+  color: '#00ff00'
 }));
 
 // add a red box at (0, 500) which moves to the right at a uniform velocity.
 scene.addObject(new Rect({
   x: 0,
   y: 500,
-  fillColor: '#ff0000',
+  color: '#ff0000',
   // DON'T use arrow function for update, or you'll lose access to the object's own properties.
   update: function(deltaTime) {
     this.x += deltaTime * 0.1;

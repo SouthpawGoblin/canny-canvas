@@ -1,8 +1,7 @@
 import CannyObject, { ObjectConfig } from "./Object";
-import { BorderStyle } from "./types";
-import { BORDER_STYLE } from "./defaults";
+import { RECT_CONFIG } from "./defaults";
 
-interface RectConfig extends ObjectConfig {
+export interface RectConfig extends ObjectConfig {
   width: number;
   height: number;
   color: string;
@@ -12,20 +11,21 @@ interface RectConfig extends ObjectConfig {
 }
 
 export default class CannyRect extends CannyObject {
-  props: RectConfig
-  // TODO:
+  width: number;
+  height: number;
+  color: string;
+  stroke: boolean;
+  strokeWidth: number;
+  cornerRadius: number;
+
   constructor(config?: Partial<RectConfig>) {
     super(config);
-    this.width = config?.width ?? 100;
-    this.height = config?.height ?? 100;
-    this.borderStyle = {
-      show: config?.border?.show ?? BORDER_STYLE.show,
-      width: config?.border?.width ?? BORDER_STYLE.width,
-      color: config?.border?.color ?? BORDER_STYLE.color,
-      radius: config?.border?.radius ?? BORDER_STYLE.radius
-    };
-    this.fillColor = config?.color ?? '#000000';
-    this.update = config?.update ?? (() => {});
+    this.width = config?.width ?? RECT_CONFIG.width;
+    this.height = config?.height ?? RECT_CONFIG.height;
+    this.color = config?.color ?? RECT_CONFIG.color;
+    this.stroke = config?.stroke ?? RECT_CONFIG.stroke;
+    this.strokeWidth = config?.strokeWidth ?? RECT_CONFIG.strokeWidth;
+    this.cornerRadius = config?.cornerRadius ?? RECT_CONFIG.cornerRadius;
   }
 
   render(ctx: CanvasRenderingContext2D) {
@@ -35,19 +35,24 @@ export default class CannyRect extends CannyObject {
     // update world coord
     this.worldX = this.parent.worldX + this.x;
     this.worldY = this.parent.worldY + this.y;
-    const rectX = this.worldX - this.width * this.anchorX;
-    const rectY = this.worldY - this.height * this.anchorY;
-    // fill rect
-    ctx.fillStyle = this.fillColor;
-    ctx.beginPath();
-    ctx.fillRect(rectX, rectY, this.width, this.height);
-    // stroke border
-    if (this.borderStyle.show) {
-      // TODO: handle border radius
-      ctx.strokeStyle = this.borderStyle.color;
-      ctx.lineWidth = this.borderStyle.width;
+    const rectX = -this.width * this.anchorX;
+    const rectY = -this.height * this.anchorY;
+    // prepare canvas
+    ctx.translate(this.worldX, this.worldY);
+    ctx.rotate(this.rotation);
+
+    if (this.stroke) {
+      // stroke rect
+      // TODO: handle corner radius
+      ctx.strokeStyle = this.color;
+      ctx.lineWidth = this.strokeWidth;
       ctx.beginPath();
       ctx.strokeRect(rectX, rectY, this.width, this.height);
+    } else {
+      // fill rect
+      ctx.fillStyle = this.color;
+      ctx.beginPath();
+      ctx.fillRect(rectX, rectY, this.width, this.height);
     }
   }
 

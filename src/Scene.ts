@@ -60,7 +60,10 @@ export default class CannyScene extends CannyObject {
       const obj = queue.shift();
       if (obj) {
         obj.update(deltaTime);
+        ctx.save();
+        // TODO: handle canvas translation and rotation outside render function.
         obj.render(ctx);
+        ctx.restore();
         obj.children.forEach(child => queue.push(child));
       }
     }

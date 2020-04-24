@@ -4,6 +4,8 @@ export interface ObjectConfig {
     y: number;
     anchorX: number;
     anchorY: number;
+    scale: number;
+    rotation: number;
     update: (deltaTime: number) => void;
 }
 export default class CannyObject {
@@ -13,12 +15,13 @@ export default class CannyObject {
     y: number;
     anchorX: number;
     anchorY: number;
+    scale: number;
+    rotation: number;
+    update: (deltaTime: number) => void;
     worldX: number;
     worldY: number;
-    scale: number;
     parent: CannyObject | null;
     children: CannyObject[];
-    update: (deltaTime: number) => void;
     constructor(config?: Partial<ObjectConfig>);
     render(ctx: CanvasRenderingContext2D): void;
     dispose(): void;
