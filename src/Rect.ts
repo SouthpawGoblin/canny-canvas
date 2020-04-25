@@ -29,18 +29,8 @@ export default class CannyRect extends CannyObject {
   }
 
   render(ctx: CanvasRenderingContext2D) {
-    if (!this.parent) {
-      return;
-    }
-    // update world coord
-    this.worldX = this.parent.worldX + this.x;
-    this.worldY = this.parent.worldY + this.y;
     const rectX = -this.width * this.anchorX;
     const rectY = -this.height * this.anchorY;
-    // prepare canvas
-    ctx.translate(this.worldX, this.worldY);
-    ctx.rotate(this.rotation);
-
     if (this.stroke) {
       // stroke rect
       // TODO: handle corner radius

@@ -61,8 +61,16 @@ export default class CannyScene extends CannyObject {
       if (obj) {
         obj.update(deltaTime);
         ctx.save();
-        // TODO: handle canvas translation and rotation outside render function.
-        obj.render(ctx);
+        if (obj.parent) {
+          // update world coord
+          obj.worldX = obj.parent.worldX + obj.x;
+          obj.worldY = obj.parent.worldY + obj.y;
+          // prepare canvas
+          ctx.translate(obj.worldX, obj.worldY);
+          ctx.rotate(obj.rotation);
+          // render
+          obj.render(ctx);
+        }
         ctx.restore();
         obj.children.forEach(child => queue.push(child));
       }

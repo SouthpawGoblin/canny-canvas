@@ -29,7 +29,10 @@ if (dom) {
   rect.addObject(new Rect({
     x: 50,
     y: 50,
-    color: '#ff0000'
+    color: '#ff0000',
+    update: function(this: Rect, deltaTime: number) {
+      this.rotation += -deltaTime * 0.001;
+    }
   }));
   scene.addObject(rect);
 
