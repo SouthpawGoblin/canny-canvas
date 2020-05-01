@@ -28,7 +28,7 @@ export default class CannyRect extends CannyObject {
     this.cornerRadius = config?.cornerRadius ?? RECT_CONFIG.cornerRadius;
   }
 
-  render(ctx: CanvasRenderingContext2D) {
+  render(ctx: CanvasRenderingContext2D, debug?: boolean) {
     const rectX = -this.width * this.anchorX;
     const rectY = -this.height * this.anchorY;
     if (this.stroke) {
@@ -43,6 +43,13 @@ export default class CannyRect extends CannyObject {
       ctx.fillStyle = this.color;
       ctx.beginPath();
       ctx.fillRect(rectX, rectY, this.width, this.height);
+    }
+    // debug mode
+    if (debug) {
+      ctx.fillStyle = '#666666';
+      ctx.beginPath();
+      ctx.ellipse(0, 0, 3, 3, 0, 0, Math.PI * 2);
+      ctx.fill();
     }
   }
 

@@ -15,6 +15,6 @@ export default class CannyRect extends CannyObject {
     strokeWidth: number;
     cornerRadius: number;
     constructor(config?: Partial<RectConfig>);
-    render(ctx: CanvasRenderingContext2D): void;
+    render(ctx: CanvasRenderingContext2D, debug?: boolean): void;
     dispose(): void;
 }

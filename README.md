@@ -25,6 +25,8 @@ import { Scene, Rect } from 'canny-canvas';
 
 const dom = document.getElementById('app');
 const scene = new Scene(dom);
+// set `scene.debug` to `true` to render additional object information such as geometrical center.
+// scene.debug = true
 ```
 
 2. Add `Object`s to the `Scene`

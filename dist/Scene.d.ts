@@ -2,6 +2,7 @@ import CannyObject from "./Object";
 export default class CannyScene extends CannyObject {
     dom: HTMLElement;
     translate: number[];
+    debug: boolean;
     protected _canvas: HTMLCanvasElement;
     protected _mounted: boolean;
     protected _rendering: boolean;

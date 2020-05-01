@@ -3,6 +3,7 @@ import CannyObject from "./Object";
 export default class CannyScene extends CannyObject {
   dom: HTMLElement;
   translate: number[];
+  debug: boolean;
 
   protected _canvas: HTMLCanvasElement;
   protected _mounted: boolean;
@@ -17,6 +18,7 @@ export default class CannyScene extends CannyObject {
     });
     this.dom = dom;
     this.translate = [0, 0];
+    this.debug = false;
     this._canvas = document.createElement('canvas');
     this._canvas.width = this.dom.clientWidth;
     this._canvas.height = this.dom.clientHeight;
@@ -69,7 +71,7 @@ export default class CannyScene extends CannyObject {
           ctx.translate(obj.worldX, obj.worldY);
           ctx.rotate(obj.rotation);
           // render
-          obj.render(ctx);
+          obj.render(ctx, this.debug);
         }
         ctx.restore();
         obj.children.forEach(child => queue.push(child));

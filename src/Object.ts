@@ -45,7 +45,7 @@ export default class CannyObject {
     this.children = [];
   }
 
-  render(ctx: CanvasRenderingContext2D) {};
+  render(ctx: CanvasRenderingContext2D, debug?: boolean) {};
 
   dispose() {};
 

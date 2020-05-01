@@ -23,7 +23,7 @@ export default class CannyObject {
     parent: CannyObject | null;
     children: CannyObject[];
     constructor(config?: Partial<ObjectConfig>);
-    render(ctx: CanvasRenderingContext2D): void;
+    render(ctx: CanvasRenderingContext2D, debug?: boolean): void;
     dispose(): void;
     addObject(obj: CannyObject): void;
 }
